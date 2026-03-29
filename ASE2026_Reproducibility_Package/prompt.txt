@@ -1,0 +1,79 @@
+# Prompt
+
+## BERTopic Topic Merging Prompt
+
+We refined initial clusters by iteratively merging topics: in each iteration, an LLM with chain-of-thought reasoning [1] identified the two most semantically overlapping topics based on top-10 c-TF-IDF keywords and 10 sampled posts, merged them, and generated a new label. This process repeated until no similar topic pairs remained.
+
+**Prompt 1: Iterative Topic Merging**
+
+> You are an expert in DataOps and software engineering, specializing in data pipeline development, orchestration, and operations. 
+
+> Your task is to analyze two topics representing clusters of practitioner discussions from Stack Overflow and GitHub, and determine whether they should be merged based on semantic similarity.
+>
+> You are given for each topic:
+> - Top-10 c-TF-IDF keywords (most representative terms)
+> - 10 randomly sampled posts (actual user questions/discussions)
+>
+> ## Topic A
+> Keywords: {topic_a_keywords}
+> Sample Posts:
+> {topic_a_posts}
+>
+> ## Topic B
+> Keywords: {topic_b_keywords}
+> Sample Posts:
+> {topic_b_posts}
+>
+> Please follow chain-of-thought reasoning:
+> - **Step 1: Analyze keyword overlap between the two topics.** Identify common keywords, related terms, and any distinctive terms that differentiate the topics.
+>
+> - **Step 2: Analyze the content of sample posts.** Read through the sample posts and identify:
+>   - The core problems users are facing
+>   - The types of questions being asked
+>   - Recurring patterns or concepts
+>
+> - **Step 3: Assess semantic similarity.** Based on the keyword and content analysis, determine if these topics:
+>   - Represent the same underlying problem domain → MERGE
+>   - Are distinct but related → KEEP SEPARATE
+>   - Are completely unrelated → KEEP SEPARATE
+>
+> - **Step 4: Make decision with justification.**
+>
+> ## Output Format
+>
+> **Reasoning:** [Provide your step-by-step analysis following Steps 1-3]
+>
+> **Decision:** [MERGE / KEEP SEPARATE]
+>
+> If MERGE, provide:
+> - **Merged Label:** [A concise 2-4 word label that captures the merged topic]
+> - **Rationale:** [Explain why these topics belong together]
+>
+> If KEEP SEPARATE, provide:
+> - **Rationale:** [Explain why these topics should remain distinct]
+
+---
+
+## Topic Labeling Prompt
+
+After merging, we used the following prompt to generate final labels for each topic category:
+
+**Prompt 2: Naming Categories and Topic**
+
+> You are an expert in DataOps and software engineering. Based on the following information, generate a concise, descriptive label for this problem topic.
+>
+> **Topic Information:**
+> - Top-10 c-TF-IDF Keywords: {keywords}
+> - Representative Sample Posts: {sample_posts}
+>
+> **Requirements:**
+> - Label should be 2-4 words
+> - Capture the core problem domain
+> - Use standard DataOps terminology
+> - Be descriptive and meaningful
+>
+> **Output Format:**
+>
+> **Label:** [Proposed topic label]
+>
+> **Rationale:** [Brief explanation of why this label is appropriate]

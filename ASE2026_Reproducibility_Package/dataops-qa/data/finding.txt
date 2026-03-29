@@ -1,0 +1,116 @@
+好的，以下是您的DataOps问题分类学(Taxonomy)和十个解决方案(Solutions)的总结：
+
+---
+
+## DataOps Problem Taxonomy
+
+**Setup (S)** – Covers foundational environment configuration for DataOps, including three topics:
+- **Dependency (S.1)** : Managing software dependencies during initial environment setup, including package installation, library conflicts, and dependency resolution
+- **Resource (S.2)** : Infrastructure resource configuration, such as compute capacity, storage limits, and cloud quotas
+- **Version (S.3)** : Software version compatibility and upgrade challenges, including version mismatches, migration issues, and feature changes across releases
+
+**Develop (D)** – Encompasses core development activities in DataOps pipelines, including three topics:
+- **Framework API (D.1)** : Framework-specific APIs, including accessing built-in variables, passing data between tasks, defining dependencies, and extending functionality
+- **Syntax (D.2)** : Language syntax issues, including SQL dialect differences, identifier handling, and framework-specific rules
+- **Workflow (D.3)** : Task dependency management, parameter passing, and conditional execution
+
+**Preprocess (P)** – Covers problems encountered when preparing data, including four topics:
+- **Data Format (P.1)** : Data file format handling, including reading, writing, and converting between formats
+- **Data Quality (P.2)** : Data validation, cleansing, and quality assurance
+- **Data Schema (P.3)** : Schema evolution, compatibility, and management
+- **Data Type (P.4)** : Data type conversion and type-related errors
+
+**Execute (E)** – Addresses runtime challenges during pipeline execution, including three topics:
+- **JobState (E.1)** : Task execution status, job failures, and state management
+- **Monitor (E.2)** : Pipeline monitoring, logging, and observability
+- **Performance (E.3)** : Pipeline performance optimization and efficiency
+
+**Integrate (I)** – Addresses challenges of connecting DataOps systems with external services, including four topics:
+- **External API (I.1)** : Integrating with external services through APIs, including API calls, authentication, and cross-service data exchange
+- **Cloud (I.2)** : Integrating with cloud services, including storage access, service authentication, and cross-service permissions
+- **Database (I.3)** : Connecting and interacting with databases, including JDBC connections, data reading/writing, and driver management
+- **Git (I.4)** : Version control integration and Git-related workflow issues
+
+**Deploy (DP)** – Addresses challenges of deploying data pipelines into production, including two topics:
+- **Package (DP.1)** : Packaging, saving, and exporting models for deployment
+- **Pipeline (DP.2)** : Defining, deploying, and automating data pipelines
+
+---
+
+## Ten Solution Types
+
+| ID | Solution Description | #Posts | Percentage |
+|:---|:---|:---:|:---:|
+| **S1** | Check if you're using the correct API or module | 84 | 27.8% |
+| **S2** | Tune your pipeline parameters | 60 | 19.9% |
+| **S3** | Check version compatibility | 24 | 7.9% |
+| **S4** | Fix syntax errors in your data code | 21 | 7.0% |
+| **S5** | Check your data source connections | 19 | 6.3% |
+| **S6** | Check your data formats | 31 | 10.3% |
+| **S7** | Restart or reset your environment | 5 | 1.7% |
+| **S8** | Check your permissions | 26 | 8.6% |
+| **S9** | Fix your file paths | 24 | 7.9% |
+| **S10** | Clean up temporary data | 9 | 3.0% |
+| **Total** | | **302** | **75.12%** |
+
+**Key observations:**
+- **S1 (correct API/module)** is the most prevalent solution, appearing in 84 posts (27.8%)
+- **S2 (tune parameters)** follows with 60 occurrences (19.9%)
+- **S6 (check data formats)** ranks third with 31 occurrences (10.3%)
+- **S7 (restart environment)** is the least used, appearing only 5 times (1.7%)
+- The ten solutions collectively cover **302 posts**, accounting for **75.12%** of the sampled Stack Overflow discussions
+
+---
+
+
+好的，以下是您论文中各个研究问题的具体发现摘录，方便您直接引用：
+
+---
+
+## RQ1: Problem Taxonomy
+
+**RQ1 Finding (a)** – Our analysis constructs a hierarchical taxonomy of 6 categories and 19 topics, revealing the diversity of DataOps challenges. Discussions are primarily concentrated in the Develop, Integrate, and Setup categories, with API-related issues being the most prominent, followed by dependency management and workflow orchestration.
+
+**RQ1 Finding (b)** – Setup is a significant challenge in DataOps practice, with dependency management emerging as the most critical concern. Practitioners frequently struggle with package installation, library conflicts, and dependency resolution, highlighting that software dependency management remains a fundamental hurdle in establishing DataOps environments.
+
+**RQ1 Finding (c)** – Development is the most discussed category (36.4%), indicating that implementing data pipelines is the core challenge in DataOps practice. Within this category, Framework API alone accounts for nearly half (48.4%) of development discussions, suggesting that learning and using framework APIs is a key pain point for practitioners.
+
+**RQ1 Finding (d)** – Preprocess discussions account for 9.4% of all DataOps conversations, with Data Format (36.6%) and Data Quality (26.6%) as the most prominent topics. The relatively even distribution across preprocessing topics suggests that data preparation challenges are multifaceted, with practitioners facing a balanced mix of format handling, quality validation, schema evolution, and type conversion issues.
+
+**RQ1 Finding (e)** – Execute-related discussions account for 12.7% of all DataOps conversations, with JobState (53.4%) as the dominant topic, followed by Performance (25.8%) and Monitor (20.8%). The prominence of JobState indicates that understanding and managing task execution status—why jobs fail, stall, or behave unexpectedly—is the primary operational concern for practitioners.
+
+**RQ1 Finding (f)** – Integration-related discussions account for 20.7% of all DataOps conversations, with External API (47.3%) as the most prominent topic, followed by Cloud (25.7%) and Database (24.2%). The dominance of External API indicates that practitioners struggle most with connecting to and orchestrating external services, rather than with cloud storage or database integrations. This suggests that API-driven integrations—such as triggering workflows, managing connections, and handling authentication—are the primary pain points in DataOps integration practice.
+
+**RQ1 Finding (g)** – Deploy-related discussions account for 2.8% of all DataOps conversations, with Pipeline (89.3%) overwhelmingly dominating over Package (10.7%). This stark contrast indicates that practitioners focus far more on orchestrating end-to-end workflows and CI/CD automation than on packaging individual components. The dominance of pipeline discussions suggests that the complexity of DataOps lies not in building deployable artifacts, but in managing the continuous delivery of data workflows across environments.
+
+**RQ1 Finding (h)** – The problem categories observed in GitHub issues align with those identified on Stack Overflow, confirming that DataOps challenges are consistent across platforms. However, the differing distribution of discussions may reflect the distinct nature of the two platforms. GitHub issues capture real-world challenges encountered during collaborative project development, including environment configuration and data preparation, whereas Stack Overflow serves as a knowledge-sharing forum where practitioners seek help for implementation and integration problems.
+
+---
+
+## RQ2: Characteristics of the Problems
+
+**RQ2 Finding (a)** – Popularity rankings reveal distinct platform focuses. Stack Overflow favors environment configuration (Resource, Version) and task execution status (Monitor, JobState), reflecting foundational help-seeking. GitHub emphasizes package deployment (Package), workflow orchestration (Workflow), and performance optimization (Performance), highlighting practical development needs. Meanwhile, JobState, Cloud, and Performance remain consistently important across both platforms as core DataOps concerns.
+
+**RQ2 Finding (b)** – Problem difficulty is not solely inherent to the topic itself, but may also depend on the context in which it is addressed—whether in a knowledge-sharing forum seeking quick answers or in a project development environment requiring comprehensive implementation and testing.
+
+---
+
+## RQ3: Root Cause Analysis
+
+**RQ3 Finding (a)** – On Stack Overflow, Develop is the most frequent root cause category, with Framework API emerging as the most common root cause at the topic level. JobState is the most frequent symptom category, receiving flows from multiple root causes including Framework API, Workflow, Resource, and Dependency.
+
+**RQ3 Finding (b)** – On GitHub, Execute replaces Develop as the most frequent root cause category, while Framework API remains the most common root cause at the topic level. The differing root cause distributions reflect the distinct nature of the two platforms: Stack Overflow captures implementation problems that manifest in various ways, while GitHub issues reflect execution-stage challenges encountered in project development.
+
+**RQ3 Finding (c)** – Framework API problems consistently propagate to JobState failures across both platforms, indicating that when task execution issues arise, practitioners should first examine upstream development activities rather than focusing solely on the execution environment.
+
+---
+
+## RQ4: Solution Strategies
+
+**RQ4 Finding (a)** – Through manual analysis of 302 resolved Stack Overflow posts, we identify 10 frequent solution types that collectively account for 75.12% of resolved discussions. Using correct API or module (S1) is the most prevalent solution (84 posts, 27.8%), followed by tuning pipeline parameters (S2) (60 posts, 19.9%) and checking data formats (S6) (31 posts, 10.3%).
+
+**RQ4 Finding (b)** – Solution distribution analysis reveals that certain solutions are widely applicable across multiple categories. Using correct API or module (S1) and tuning pipeline parameters (S2) span five problem categories each, collectively resolving 144 posts (47.68% of all resolved posts). Checking version compatibility (S3), checking data formats (S6), and checking permissions (S8) each appear in four categories.
+
+**RQ4 Finding (c)** – We identify strong associations between specific solutions and particular problem categories. Using correct API or module (S1) is most effective for Develop-related problems, resolving 42.06% of posts in this category. Tuning pipeline parameters (S2) shows a strong correlation with Execute-related problems, accounting for 42.55% of resolutions. Checking data source connections (S5) is particularly relevant for Integrate-related issues, addressing 21.67% of posts in this category.
+
+---
